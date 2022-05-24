@@ -1,4 +1,3 @@
-var findBeauty = require("./func/findBeauty");
 var divination = require("./func/divination");
 var weather = require("./func/weather");
 
