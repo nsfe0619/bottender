@@ -15,6 +15,42 @@ module.exports = async function App(context) {
       } else {
         // 完整比對關鍵字
         switch (context.event.message.text) {
+          case '你會做什麼':  
+          context.replyText(
+            '我會做這些',
+            {
+              quickReply: {
+                items: [
+                  {
+                    type: 'action',
+                    action: {
+                      type: 'message',
+                      label: '貼圖',
+                      text: '貼圖',
+                    },
+                  },
+                  {
+                    type: 'action',
+                    action: {
+                      type: 'message',
+                      label: '地址',
+                      text: '地址',
+                    },
+                  },
+                  {
+                    type: 'action',
+                    action: {
+                      type: 'message',
+                      label: '運勢',
+                      text: '運勢',
+                    },
+                  },
+                ],
+              },
+            }
+          );
+          break;
+        
           case '貼圖':
             context.replySticker({ packageId: '6325', stickerId: '10979905' });
             break;
@@ -35,10 +71,7 @@ module.exports = async function App(context) {
         }
       }
     } else if (context.event) {
-      // 神秘的東西
-      if (context.event.message.stickerId == '444306422') {
-        findBeauty.findBeauty(context);
-      }
+      context.replySticker({ packageId: '6325', stickerId: '10979905' });
     } else {
       context.replyText('我看不懂你在講什麼');
     }
